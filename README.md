@@ -1,11 +1,11 @@
 # Exploratory Data Analysis - Customer Loans in Finance
 
 ## Table of Contents
-[Project Description](#ProjectDescription)
-[Installation](#Installation)
-[Usage](#Usage)
-[File structure of the project](#Filestructureoftheproject)
-[License](#License)
+1. [Project Description](#ProjectDescription)
+2. [Installation](#Installation)
+3. [Usage](#Usage)
+4. [File structure of the project](#Filestructureoftheproject)
+5. [License](#License)
 
 
 
@@ -40,10 +40,11 @@ git clone https://github.com/elliesgithub/exploratory-data-analysis---customer-l
 
 
 ## File structure of the project
+```
 Exploratory Data Analysis
 ├─ Loan_datasets/
 │  ├─ loan_payments.csv
-│  ├─ loan_payments_changed_skewed_data.csv 
+│  ├─ loan_payments_changed_skewed_data.csv  
 │  ├─ loan_payments_null_imputations.csv          
 │  └─ loan_payments_outliers_and_correlation.csv 
 ├─ Analysis_visualisation.ipynb 
@@ -56,35 +57,35 @@ Exploratory Data Analysis
 ├─ plotter.py
 ├─ LICENSE.txt
 ├─ README.md
+```
 
 
 
-
-(Readme documentation)
+**READ ME**
 - README.md
 
-(CSV files)
+**CSV FILES**
 - loan_payments.csv
 - loan_payments_changed_skewed_data.csv
 - loan_payments_null_imputations.csv
 - loan_payments_outliers_and_correlation.csv
 
-(Python scripts)
+**PYTHON SCRIPTS**
 - db_utils.py
 - datatransform.py
 - dataframeinfo.py
 - dataframetransform.py
 - plotter.py
 
-(Notebooks)
+**NOTEBOOKS**
 - skewness.ipynb
 - EDANotebook.ipynb
 - Analysis_visualisation.ipynb
 
-(YAML file)
+**YAML**
 - conda_environment.yaml
 
-(License document)
+**LICENSE**
 - LICENSE.txt
 
 Omitted files = 
