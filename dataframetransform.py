@@ -25,7 +25,6 @@ class DataFrameTransform:
         """
         self.df[column].fillna(self.df[column].mean(), inplace=True)
         
-    
 
     def impute_with_median(self, column):
         """
@@ -48,18 +47,27 @@ class DataFrameTransform:
 
 
     def boxcox(self, column):
+        """
+        This function uses the boxcox transfromation using pandas and scipy 
+        """
         boxcox_column = stats.boxcox(self.df[column]+1)
         boxcox_column = pd.Series(boxcox_column[0])
         return boxcox_column
 
 
     def yeojohnson(self, column):
+        """
+        This function uses the yeojohnson transfromation using pandas and scipy 
+        """
         yeojohnson_column = stats.yeojohnson(self.df[column])
         yeojohnson_column = pd.Series(yeojohnson_column[0])
         return yeojohnson_column
 
 
     def log(self, column):
+        """
+        This function uses the log transformation 
+        """
         log_column = self.df[column].map(lambda i: np.log1p(i) if i > 0 else 0)
         return log_column
 
@@ -96,16 +104,19 @@ class DataFrameTransform:
         return best_transformations
 
 
-
-    def save_changed_skewed_data_to_csv(self, filename='loan_payments_changed_skewed_data.csv'):
+    def save_changed_skewed_data_to_csv(self,local_file_path='Loan_datasets/loan_payments_changed_skewed_data.csv'):
         """ 
-        This method saves the dataframe to a .csv file.
+        This method saves the transformed dataframe to a .csv file.
         """
-        self.df.to_csv(filename, index=False)
-        print(f'Data saved to {filename}')
+        local_file_path = 'Loan_datasets/loan_payments_changed_skewed_data.csv'
+        self.df.to_csv(local_file_path, index=False)
+        print(f'Data saved to {local_file_path}')
 
 
     def remove_outliers(self, columns):
+        """
+        This method removes outliers for each of the columns 
+        """
         for column in columns:
             Q1 = self.df[column].quantile(0.25)
             Q3 = self.df[column].quantile(0.75)
@@ -120,14 +131,19 @@ class DataFrameTransform:
 
             self.df = self.df.drop(outliers.index)
 
-    def save_removed_outliers_and_over_correlation_to_csv(self, filename='loan_payments_outliers_and_correlation.csv'):
+
+    def save_removed_outliers_and_over_correlation_to_csv(self, local_file_path ='loan_payments_outliers_and_correlation.csv'):
         """ 
-        This method saves the dataframe to a .csv file.
+        This method saves the transformed dataframe to a .csv file.
         """
-        self.df.to_csv(filename, index=False)
-        print(f'Data saved to {filename}')
+        local_file_path = 'Loan_datasets/loan_payments_outliers_and_correlation.csv'
+        self.df.to_csv(local_file_path, index=False)
+        print(f'Data saved to {local_file_path}')
+
 
     def identify_highly_correlated_columns(self, threshold=0.8):
+        """ 
+        This method identifies any columns which have high correlation """
         numeric_columns = self.df.select_dtypes(include='number')
         correlation_matrix = numeric_columns.corr()
         highly_correlated_columns = set()
@@ -144,7 +160,8 @@ class DataFrameTransform:
 
 
     def remove_highly_correlated_columns(self, threshold=0.8):
-        # Identify highly correlated columns
+        """
+        This method removes the overly correlated columns after idetnidy the highly correlated columns in the above method"""
         highly_correlated_columns = self.identify_highly_correlated_columns(threshold=threshold)
         self.df = self.df.drop(columns=highly_correlated_columns)
 

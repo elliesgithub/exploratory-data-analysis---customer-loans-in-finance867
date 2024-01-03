@@ -47,6 +47,9 @@ class DataTransform:
     
 
     def drop_rows(self,column):
+        """
+        Drops rows which can be dropped in first steps of EDA notebook 
+        """
         self.dataframe.dropna(subset=column, inplace=True)
         return self.dataframe
 

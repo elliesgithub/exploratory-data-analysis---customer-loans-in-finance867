@@ -92,6 +92,16 @@ class DataFrameInfo:
 
         return skewed_columns_list 
     
+
+    def calculate_column_percentage(self, numerator_column, denominator_column):
+        """
+        This method calculates the perecntage of a column in a dataframe"""
+        total_numerator = self.df[numerator_column].sum()
+        total_denominator = self.df[denominator_column].sum()
+        
+        percentage = (total_numerator / total_denominator) * 100
+        return percentage
+    
     
 
    

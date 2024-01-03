@@ -55,7 +55,7 @@ if __name__ == "__main__":
     data_frame = rds_connector.extract_data_to_dataframe(sql_query)
     rds_connector.save_data_to_csv(data_frame)
 
-    local_file_path = 'loan_payments.csv'
+    local_file_path = 'Loan_datasets/loan_payments.csv'
     
 
 
